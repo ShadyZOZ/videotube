@@ -1,0 +1,31 @@
+extends ../layout
+
+block content
+    .container
+        .row
+            .col-md-8
+                div(class="embed-responsive embed-responsive-16by9")
+                    video(class="video-js vjs-default-skin" controls preload="auto" data-setup="{'autoplay':true}")
+                        source(src="#{video.flash}" type="video/mp4")
+                        p(class="vjs-no-js") To view this video please enable JavaScript, and consider upgrading to a web browser that
+                        a(href="http://videojs.com/html5-video-support/" target="_blank") supports HTML5 video
+            .col-md-4
+                div
+                    p #{video.title}
+                    if next_id > total
+                        a.btn.btn-primary(href="/", role="button") 回到首页
+                    else
+                        a.btn.btn-primary(href="/movie/#{title}/#{next_id}", role="button") 下一集
+                        br
+                        br
+                        a.btn.btn-primary(href="/", role="button") 回到首页
+                br
+                div
+                    p 播放列表
+                    table(class="table")
+                        - for (var x = 0; x < total/6; x++)
+                            tr(style="border: none")
+                                - for (var y = 1; y < 7; y++)
+                                    td(style="border: none")
+                                        if (x * 6 + y) <= total
+                                            a.btn.btn-default(href="/movie/#{title}/#{x * 6 + y}", role="button" style="width:50px; height:34px") #{x * 6 + y}

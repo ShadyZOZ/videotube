@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+    .container
+        .row
+            each item in movies
+                .col-md-2
+                    .thumbnail
+                        a(href="/movie/#{item.albumName}/1")
+                            img(alt="#{item.albumName}", src="#{item.poster}", height="190", width="140")
+                        .caption
+                            p #{item.albumName}
+                            p: a.btn.btn-primary(href="/movie/#{item.albumName}/1", role="button") 点击观看

@@ -1,0 +1,6 @@
+{
+    "name": "videotube",
+    "preferGlobal": "true",
+    "description": "A movie showcase website",
+    "version": "5.5.0"
+}
