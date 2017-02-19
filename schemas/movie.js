@@ -1,11 +1,19 @@
-var mongoose = require('mongoose')
+let mongoose = require('mongoose')
 
-var videosSchema = new mongoose.Schema({
-    albumName: String,
+let videosSchema = new mongoose.Schema({
+    videoName: {
+        type: String,
+        index: true,
+        unique: true
+    },
     poster: String,
     videos: [{
-        video_name: String,
-        video_url: String
+        name: String,
+        url: String,
+        watched: {
+            type: Boolean,
+            default: false
+        }
     }]
 })
 
